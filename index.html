@@ -267,7 +267,7 @@
 						options to make sure you don't spin out of scope, has abilities to include authentication cookies
 						or other headers, using a headless browser instead of "dumb" html parsing...
 						</p>
-						<pre><code>katana -list url_list.txt -jc -kf -cs target.tld -ef jpg,png</code></pre>
+						<pre><code>katana -list url_list.txt -jc -kf -ef jpg,png</code></pre>
 					</section>
 					<section>
 						<br>
@@ -303,6 +303,9 @@
 						</h4>
 						<p>You can utilize tools like tomnomnom's <a href="https://github.com/tomnomnom/unfurl">unfurl</a>
 						to extract juicy parts of the crawled urls to create basis for a custom wordlist. Typically interesting things include parameter keys, values, paths etc.</p>
+
+						<pre class="bash" data-id="code-animation"><code># GET parameter keys
+cat url_list.txt | unfurl keys | tee keys.txt</code></pre>
 
 						<p>There are some old and trusty tools like <a href="https://github.com/digininja/CeWL">CeWL</a> for target based wordlist generation from everything
 						on the site.</p>
@@ -368,7 +371,7 @@
 					<section>
 						<h4>Advanced web fuzzing: Credential scraping</h4>
 						<p>Ffuf provides a way to add something called <a href="https://github.com/ffuf/ffuf/wiki/Scraper">scraper rules</a>. These are json files can be placed in $HOME/.config/ffuf/scraper/</p>
-						<p>An example file that can be used in the workshop is provided in <a href="UPDATETHISURL/blob/master/aws_creds.json">git repo</a>. These rules are passively applied to all ffuf scans if you save the file in the global scrapers directory. For one-shot usage, you can just reference a scraper file with -scraperfile cli parameter.</p>
+						<p>These rules are passively applied to all ffuf scans if you save the file in the global scrapers directory. For one-shot usage, you can just reference a scraper file with -scraperfile cli parameter.</p>
 						<pre data-id="code-animation"><code># mc 999 will disable all output unless a scraper rule is hit
 ffuf -w all_urls.txt -u FUZZ -mc 999 \
 	   -scraperfile aws_creds.json</code></pre>
@@ -436,6 +439,8 @@ ffuf -w all_urls.txt -u FUZZ -mc 999 \
 						you interactsh domain to be <b>iash.evil.com</b>:</p>
 						<pre data-id="code-animation"><code>ffuf -w params.txt -u \
 		https://target.tld/?FUZZ=%2F%2FFFUFHASH.iash.evil.com</code></pre>
+						<p>To get the raw request after a hit:</p>
+						<pre data-id="code-animation"><code>ffuf -search 129fhna</code></pre>	
 					</section>
 				</section>
 				<section>
