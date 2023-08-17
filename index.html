@@ -28,7 +28,6 @@
 				<section>
 					<h1>EASM - A deep 🤿 </h1>
 					<h4>https://camp-easm-deep.github.io</h4>
-					<h4>DOWNLOAD: <a href="http://vm.dontfindmeplz.com">http://vm.dontfindmeplz.com</a></h4>
 				</section>
 				<section>
 					<h1>WHOAMI</h1>
@@ -41,9 +40,7 @@
 						<li style="font-size: 0.7em;"><a href="https://twitter.com/six2dez1">@six2dez1</a> on Twiter, <a href="https://github.com/six2dez">@six2dez</a> almost everywhere else</li>
 					</ul>
 					</br>
-					<div style="font-size: 0.5em;">
-						DOWNLOAD: vm.dontfindmeplz.com
-					</div>
+
 				</section>
 				<section>
 					<h1>WHOAMI</h1>
@@ -56,22 +53,23 @@
 						<li><a href="https://twitter.com/joohoi">@joohoi</a> everywhere on the inter{webs,tubes,pipes}</li>
 					</ul>
 					</br>
-					<div style="font-size: 0.5em;">
-						DOWNLOAD: vm.dontfindmeplz.com
-					</div>
         		</section>
 				<section>
+					<section>
 					<h2>This workshop</h2>
 					<ul>
 						<li>Tools of the trade to dig deeper</li>
 						<li>What's interesting and what's not</li>
 						<li>Dabbling into vulnerability scanning</li>
 					</ul>
-					<p>Get the domain list for the labs: <a href="https://gist.githubusercontent.com/six2dez/3e11b938e61eb436ea54e54a6c361b2f/raw">https://gist.githubusercontent.com/six2dez/3e11b938e61eb436ea54e54a6c361b2f/raw</a></p>
 					</br></br>
-					<div style="font-size: 0.5em;">
-					DOWNLOAD: vm.dontfindmeplz.com
-					</div>
+					</section>
+					<section>
+						<h2>Setup</h2>
+						<p>Get the domain list for the labs:<br /> <a href="https://gist.githubusercontent.com/six2dez/3e11b938e61eb436ea54e54a6c361b2f/raw">https://gist.githubusercontent.com/six2dez/3e11b938e61eb436ea54e54a6c361b2f/raw</a></p>
+					<p>Credentials: root / camp23Recon</p>
+					</section>
+
 				</section>
 				<section>
 					<h2>Technology inspection</h2>
@@ -189,12 +187,27 @@
 							<li style="font-size: 0.7em;">From tech detection to critical exploits</li>
 							<li style="font-size: 0.7em;">Easy to start writing your own templates</li>
 						</ul>
+					</section>
+					<section>
+						<br>
+						<br>
+						<br>
+						<h4>
+							Nuclei
+						</h4>
 						<pre data-id="code-animation"><code>
 						# Fetch latest templates
 						nuclei -ut						
 						
 						# Scan horizontally for specific CVE
 						cat targets.txt | nuclei -id CVE-2023-1337
+
+						# Scan for default credentials (or other tag)
+						cat targets.txt |nuclei -tags default-login
+
+						# Automatic scan with built-in tech detection 
+						# to tag mapping
+						cat targets.txt |nuclei -as
 						</code></pre>
 					</section>
 					<section>
